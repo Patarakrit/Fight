@@ -1,0 +1,15 @@
+{
+  "name": "training",
+  "version": "0.0.1",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.73.0",
+    "underscore": "^1.8.3"
+  }
+}
