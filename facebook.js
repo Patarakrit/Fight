@@ -2,18 +2,16 @@ const request = require('request');
 const _ = require('underscore')._;
 const url = require('url');
 
-const apiVersion = 'v2.1'
-const pageId = '1517897278540114'
-const limit = 25
-const accessToken = '189801921181156|AoDoG__MMH4uKQJICVVTATtszHw'
+const yamljs = require('yamljs');
+const config = yamljs.load('config.yml');
 
 var requestUrl = url.format({
     protocol: 'https',
     hostname: 'graph.facebook.com',
-    pathname: apiVersion + '/' + pageId + '/posts',
+    pathname: config.apiVersion + '/' + config.pageId + '/posts',
     query: {
-        limit: limit,
-        access_token: accessToken,
+        limit: config.limit,
+        access_token: config.accessToken,
         fields: 'message,likes.limit(0).summary(true)'
     }
 })
