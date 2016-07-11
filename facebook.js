@@ -1,11 +1,28 @@
 const request = require('request');
 const _ = require('underscore')._;
+const url = require('url');
 
-request('https://graph.facebook.com/v2.1/141108613290/posts?limit=25&fields=message,likes.limit(0).summary(true)&access_token=189801921181156|AoDoG__MMH4uKQJICVVTATtszHw', function(err, response, body) {
+const apiVersion = 'v2.1'
+const pageId = '1517897278540114'
+const limit = 25
+const accessToken = '189801921181156|AoDoG__MMH4uKQJICVVTATtszHw'
+
+var requestUrl = url.format({
+    protocol: 'https',
+    hostname: 'graph.facebook.com',
+    pathname: apiVersion + '/' + pageId + '/posts',
+    query: {
+        limit: limit,
+        access_token: accessToken,
+        fields: 'message,likes.limit(0).summary(true)'
+    }
+})
+
+request(requestUrl, function(err, response, body) {
     if (err) {
         console.error('error', err);
         return;
-    }        
+    }
 
     body = JSON.parse(body);
 
